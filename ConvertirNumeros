@@ -1,0 +1,25 @@
+ convertir_a_letras(numero):
+    def convertir_grupo(num, singular, plural=""):
+        return f"{unidades[num]} {singular if num == 1 else plural}" if num > 0 else ""
+
+    def convertir_tres_digitos(num):
+        centena, decena, unidad = num // 100, (num % 100) // 10, num % 10
+        return f"{convertir_grupo(centena, 'CIEN', 'CIENTOS')} {convertir_grupo(decena, 'DIEZ', 'VEINTI')} {unidades[unidad]}"
+
+    unidades = ["", "UN", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE"]
+
+    if numero == 0:
+        return "CERO"
+
+    resultado_final = convertir_tres_digitos(numero % 1000)
+    grupos = [" MIL", " MILLÓN", " MIL MILLONES", " BILLÓN"]
+    for i in range(4):
+        numero //= 1000
+        resultado_final = f"{convertir_tres_digitos(numero % 1000)}{grupos[i] if numero % 1000 > 0 else ''} {resultado_final}"
+
+    return resultado_final.strip()
+
+# Ejemplo de uso
+numero_a_convertir = 123456789012345
+resultado = convertir_a_letras(numero_a_convertir)
+print(f"{numero_a_convertir:,} en letras: {resultado}")
