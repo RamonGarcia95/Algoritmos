@@ -1,0 +1,43 @@
+def cuadrado_espiral(n):
+    cuadrado = [[0] * n for _ in range(n)]
+    num = 1
+    arriba = 0
+    abajo = n - 1
+    izquierda = 0
+    derecha = n - 1
+
+    while num <= n * n:
+        for i in range(izquierda, derecha + 1): 
+            cuadrado[arriba][i] = num
+            num += 1
+        arriba += 1
+
+        for i in range(arriba, abajo + 1):
+            cuadrado[i][derecha] = num
+            num += 1
+        derecha -= 1
+
+        for i in range(derecha, izquierda - 1, -1):
+            cuadrado[abajo][i] = num
+            num += 1
+        abajo -= 1
+
+        for i in range(abajo, arriba - 1, -1):
+            cuadrado[i][izquierda] = num
+            num += 1
+        izquierda += 1
+
+    return cuadrado
+
+def imprimir_cuadrado(matriz):
+    for fila in matriz:
+        print(fila)
+
+
+
+n = int(input("Ingrese el tamaño del cuadrado (un número entero positivo): "))
+        
+
+cuadrado_espiral = cuadrado_espiral(n)
+imprimir_cuadrado(cuadrado_espiral)
+
