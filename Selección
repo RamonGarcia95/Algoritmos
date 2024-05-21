@@ -1,0 +1,14 @@
+def seleccion(lista):
+    tamaño = len(lista)
+
+    for indice in range(tamaño):
+        indice_minimo = indice
+        for j in range(indice + 1, tamaño):
+            if lista[j] < lista[indice_minimo]:
+                indice_minimo = j
+        lista[indice], lista[indice_minimo] = lista[indice_minimo], lista[indice]
+
+lista = [7, 5, 2, 14, 1]
+seleccion(lista)
+
+print(lista)
