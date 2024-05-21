@@ -1,0 +1,29 @@
+def heapsort(arreglo, tamaño, indice):
+    mayor = indice
+    izquierda = 2 * indice + 1
+    derecha = 2 * indice + 2
+
+    if izquierda < tamaño and arreglo[izquierda] > arreglo[mayor]:
+        mayor = izquierda
+
+    if derecha < tamaño and arreglo[derecha] > arreglo[mayor]:
+        mayor = derecha
+
+    if mayor != indice:
+        arreglo[indice], arreglo[mayor] = arreglo[mayor], arreglo[indice]
+        heaps(arreglo, tamaño, mayor)
+
+def ordenar_arbol(arreglo):
+    tamaño = len(arreglo)
+
+    for i in range(tamaño // 2 - 1, -1, -1):
+        heaps(arreglo, tamaño, i)
+
+    for i in range(tamaño - 1, 0, -1):
+        arreglo[i], arreglo[0] = arreglo[0], arreglo[i]
+        heaps(arreglo, i, 0)
+
+arreglo = [8, 5, 2, 15, 1]
+heapsort(arreglo)
+
+print(arreglo)
