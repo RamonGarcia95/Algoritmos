@@ -1,0 +1,20 @@
+def quicksort(lista, bajo, alto):
+    if bajo < alto:
+        pi = dividir(lista, bajo, alto)
+        quicksort(lista, bajo, pi - 1)
+        quicksort(lista, pi + 1, alto)
+
+def dividir(lista, bajo, alto):
+    pivote = lista[alto]
+    i = bajo - 1
+    for j in range(bajo, alto):
+        if lista[j] < pivote:
+            i += 1
+            lista[i], lista[j] = lista[j], lista[i]
+    lista[i + 1], lista[alto] = lista[alto], lista[i + 1]
+    return i + 1
+
+lista = [9, 4, 2, 15, 1]
+quicksort(lista, 0, len(lista) - 1)
+
+print(lista)
