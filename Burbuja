@@ -1,0 +1,12 @@
+def burbuja(lista):
+    longitud = len(lista)
+
+    for i in range(longitud - 1): 
+        for j in range(longitud - 1 - i): 
+            if lista[j] > lista[j + 1]:
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+
+lista = [7, 3, 2, 15, 0]
+burbuja(lista)
+
+print(lista)
